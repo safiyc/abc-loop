@@ -1,0 +1,16 @@
+.keys {
+    display: flex;
+    justify-content: space-around;
+}
+
+.key {
+    width: 50px;
+    border: 2px solid black;
+    background: grey;
+    color: white;
+    text-align: center;
+}
+
+.pressed {
+    background: orange;
+}
