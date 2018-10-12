@@ -9,8 +9,10 @@
     background: grey;
     color: white;
     text-align: center;
+    transition: all .1s ease;
 }
 
 .pressed {
+    transform: scale(1.5);
     background: orange;
 }
