@@ -16,3 +16,8 @@
     transform: scale(1.5);
     background: orange;
 }
+
+img {
+    width: 200px;
+    height: 200px;
+}

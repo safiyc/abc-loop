@@ -1,12 +1,12 @@
 let lastKeyCode;
 let letters = {65: "a", 66: "b", 67: "c"};
-// let letters = [{65: "a"}, {66: "b"}, {c: 67}];
-// console.log("letters: " + letters[1][66]);
+
 console.log("letters: " + letters[66]);
 
 window.addEventListener('keydown', function (e) {
     const audio = document.querySelector(`audio[data-keycode="${e.keyCode}"]`);
     const key = document.querySelector(`.key[data-keycode="${e.keyCode}"]`);
+    const img = document.querySelector("img");
 
     audio.currentTime = 0;
 
@@ -16,6 +16,7 @@ window.addEventListener('keydown', function (e) {
         // file naming conventions: a1sound, a2sound, a3sound, b1img, b2img, b3img
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}2sound.mp3`);
         audio.play();
+        img.setAttribute("src", `img/${letters[e.keyCode]}2.jpg`);
         key.classList.add('pressed');
         key.setAttribute("value", "2");
         console.log(`lastKeyCode: ${lastKeyCode}`);
@@ -23,6 +24,7 @@ window.addEventListener('keydown', function (e) {
     } else if (key.getAttribute("value") === "2" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}3sound.mp3`);
         audio.play();
+        img.setAttribute("src", `img/${letters[e.keyCode]}3.jpg`);
         key.classList.add('pressed');
         key.removeAttribute("value");
         console.log(`lastKeyCode: ${lastKeyCode}`);
@@ -31,6 +33,7 @@ window.addEventListener('keydown', function (e) {
         console.log("letter: " + letters[e.keyCode]);
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}1sound.mp3`);
         audio.play();
+        img.setAttribute("src", `img/${letters[e.keyCode]}1.jpg`);
         console.log("this key doesn't have a value yet.");
         lastKeyCode = e.keyCode;
         console.log(`lastKeyCode: ${lastKeyCode}`);
