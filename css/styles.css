@@ -7,7 +7,8 @@
 
 body, html {
     font-size: 16px;
-    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 auto;
 }
 
 .title_sec {
@@ -20,58 +21,92 @@ body, html {
     border: 1px solid black;
     width: 90%;
     height: 15rem;
-}
-
-img {
-    position: absolute;
-    margin: 0 auto;
-}
-
-.keys {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 80%;
-    margin: 0 auto;
-}
-
-.key-A {
-    min-width: 100%;
-}
-
-.key {
-    margin: .2rem;
-    width: 3.5rem;
-    height: 3.5rem;
-    border: .15rem solid black;
-    border-radius: 2rem;
-    background: lightblue;
-    color: white;
-    text-align: center;
-    transition: all .1s ease;
-    position: relative;
-}
-
-kbd {
-    /* background: green; */
-    position: absolute;
-    top: .6rem;
-    right: .65rem;
-    font-size: 1.75rem;
-}
-
-.pressed {
-    transform: scale(1.5);
-    background: orange;
+    overflow: hidden;
 }
 
 img {
     width: 6rem;
     height: 6rem;
+    position: absolute;
+    margin: 0 auto;
+    transition: ease 1s;
+}
+
+.rotate-img {
+    transform: rotate(1080deg);
+}
+
+.keys {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.key {
+    position: relative;
+    margin: .2rem;
+    width: 3.25rem;
+    height: 3.25rem;
+    border: .25rem solid grey;
+    border-radius: .3rem;
+    background: rgb(255, 255, 135);
+    color: grey;
+    text-align: center;
+    transition: all .1s ease;
+}
+
+kbd {
+    font-size: 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.w-letter {
+    position: absolute;
+    transform: scale(.95);
+    right: -.1rem;  /* okay to use neg value for position? Browser compat issues? */
+}
+
+.grey-blocks {
+    background: lightgrey;
+}
+
+.red {
+    color: rgb(255, 81, 0);
+    border-color: rgb(255, 81, 0);
+}
+
+.blue {
+    color: rgb(0, 110, 255);
+    border-color: rgb(0, 110, 255);
+}
+
+.green {
+    color: rgb(80, 173, 17);
+    border-color: rgb(80, 173, 17);
+}
+
+.purple {
+    color: purple;
+    border-color: purple;
+}
+
+.pressed {
+    transform: scale(1.25);
+    /* background: black; */
+    border-color: black;
+    color: black;
 }
 
 /* Tablet screens */
 @media (min-width: 480px) {
+    body {
+        width: 480px;
+        background: grey; /* test */
+    }
+
     .board {
         position: relative;
         margin: 0 auto;
@@ -87,5 +122,7 @@ img {
 
 /* Desktop screens */
 @media (min-width: 600px) {
-
+    body {
+        background: yellow;
+    }
 }
