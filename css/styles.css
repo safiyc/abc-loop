@@ -10,6 +10,7 @@ body, html {
     font-family: 'Montserrat', sans-serif;
     margin: 0 auto;
     min-width: 360px;
+    max-height: 750px;
     height: 100%;
 }
 
@@ -22,7 +23,7 @@ body {
 .wall {
     z-index: 1;
     background: rgb(235, 197, 180);
-    box-shadow: inset 0 -7px 2px -4px rgba(0, 0, 0, .75), 
+    box-shadow: inset 0 -7px 1px -4px rgba(0, 0, 0, .75), 
                 inset 0 -34px 2px 0 rgb(231, 208, 198), 
                 inset 0 -40px 0 0 rgb(238, 228, 224), 
                 inset 0 -46px 12px -4px rgba(0, 0, 0, .2), 
@@ -30,20 +31,49 @@ body {
 }
 
 .floor {
+    position: relative;
     background: #aa7f12; /* Old browsers */
     background: -moz-linear-gradient(top, #d4b054 0%, #aa7f12 100%);
     background: -webkit-linear-gradient(top, #d4b054 0%,#aa7f12 100%);
     background: linear-gradient(to bottom, #aa7f12 0%,#d4b054 100%);
-    text-align: center;
-    line-height: 1.75rem;
     height: calc(100% - 1.5rem);
+    max-height: 150px;
+    overflow: hidden;
+
+    perspective: 150px;     /* for rug's perspective */
+}
+
+.rug {
+    position: absolute;
+    text-align: center;
+    height: 3rem;
+    line-height: 2rem;
+    width: 80%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(204,204,204);
+    border: 6px solid cadetblue;
+    box-shadow: 0 2px 0 0 rgb(72, 119, 121),
+                0 3px 3px 0 rgba(0, 0, 0, 0.85);
+    /* for rug's perspective: transform */
+    -webkit-transform-style: preserve-3d; /* Safari 3-8  */    
+    -webkit-transform: rotateX(30deg); /* Safari 3-8  */
+    transform-style: preserve-3d;
+    transform: rotateX(30deg);
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 
 .title_sec {
     text-align: center;
     width: 12rem;
     height: 3rem;
-    margin: .5rem auto .5rem;
+    margin: .5rem auto .6rem;
     background-image: url("../img/paperbg.jpg");
     box-shadow: 0 0 4px 0px rgba(0, 0, 0, .5);
     text-shadow: 0 0 3px rgba(0, 0, 0, .8);
@@ -51,6 +81,7 @@ body {
 
 h1 {
     line-height: 3rem;
+    margin-top: .5rem;
 }
 
 .window {
@@ -59,6 +90,43 @@ h1 {
     width: 95%;
     height: 15rem;
     z-index: 1;
+}
+
+.bar {
+    position: absolute;
+    top: -7px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: .35rem;
+    border: 1px solid black;
+    background: rgb(73, 72, 72);
+    box-shadow: inset 0 1px 0.5px 0 rgb(169, 125, 106);;
+    z-index: 150;
+}
+
+.curtain {
+    position: absolute;
+    top: -9px;
+    border-top: 5px solid rgb(0, 150, 0);
+    border-left: 2px solid rgb(0, 199, 0);
+    border-right: 2px solid rgb(0, 199, 0);
+    opacity: .65;
+    box-shadow: 0 4px 10px -2px black;
+    height: 18rem;
+    z-index: 200;
+}
+
+.curtain-left {
+    left: -6px;
+    width: 5rem;
+    background: url("../img/curtain-left.jpg");
+}
+
+.curtain-right {
+    right: -6px;
+    width: 4rem;
+    background: url("../img/curtain-right.jpg");
+    background-position: 100% 0;
 }
 
 .window-frame-glass {
@@ -79,7 +147,6 @@ h1 {
                 0 10px 2px -2px black, 
                 0 25px 0 -6px white,
                 0 26px 2px -7px black;
-    /* overflow: hidden; */
     z-index: 100;
 }
 
@@ -88,8 +155,8 @@ h1 {
     width: 4rem;
     /* background: lightgrey; */
     position: absolute;
-    /* to center img in div: width, left, right, margin-left, margin-right */
     top: 10%;
+    /* to center img in div: width, left, right, margin-left, margin-right */
     left: 0;
     right: 0;
     margin-left: auto;
@@ -108,7 +175,6 @@ h1 {
 .outside {
     position: absolute;
     /* to center img in div: width, left, right, margin-left, margin-right */
-    /* top: 10%; */
     left: 0;
     right: 0;
     margin-left: auto;
@@ -117,11 +183,6 @@ h1 {
     background: url("../img/window_view.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    /* width: 12rem; */
-    /* line-height: 25rem;
-    text-align: center;
-    background: black;
-    color: white; */
     z-index: 0;
 }
 

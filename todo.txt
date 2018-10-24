@@ -1,34 +1,30 @@
-26 objects (abc..z)
 
-example object 'a':
-{65: "a", sound1: "a", sound2: 'apple', sound3: 'airplane', img1: ?, img2: ?, img3: ?}
-
-or example object 'a':
-{65: "a"}
-
-filename conventions:
-a1sound, a2sound, a3sound
-a1img, a2img, a3img
-
-------------------
 todo:
 X-keydown through sound files
 X-reset sound loop at different key pressed
 X-correct sound file loads according to key pressed
 X-correct img file loads
-
+X-layout of webpage
 X-img rotates into view
--img moves into view from left or right
+X-add perspective rug
+X-add transparent curtains
+
+-img moves into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
+-display word on click
+?-jpg color-coded or js 'haiku' syllable color-coded
+?-display word before img
+
+-improve glass window effect (css animate window; 'flash' on letter click?)
+
+-letter casing switch btn
+-reload webpage btn
+
 -letters clickable
 -letters touchable (mobile)
-?-letter casing switch OR change font
--reload webpage
--layout of webpage
 
 -refactor code
 
 ?-press 'a', display "Aa", then random a2/a3/a4
-?-img into view from left or right
 
 -create sound files
 -create img files
@@ -75,3 +71,9 @@ e4 = earth
 f2 = fig
 f3 = fox
 f4 = football
+
+----------------------
+
+filename conventions:
+sound: a1sound, a2sound, a3sound
+img: a1, a2, a3

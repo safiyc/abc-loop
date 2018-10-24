@@ -13,79 +13,70 @@ window.addEventListener('keydown', function (e) {
     const audio = document.querySelector(`audio[data-keycode="${e.keyCode}"]`);
     const key = document.querySelector(`.key[data-keycode="${e.keyCode}"]`);
 
+    // confirms value of key in loop
+    // file naming conventions: a1sound, a2sound, a3sound, b1, b2, b3
     if (key.getAttribute("value") == "1" && e.keyCode == lastKeyCode) {
-        // file naming conventions: a1sound, a2sound, a3sound, b1, b2, b3
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}2sound.mp3`);
-        audio.play();
         img.setAttribute("src", `img/${letters[e.keyCode]}2.jpg`);
-        img.style.top = "30%";
-        img.classList.add('rotate-img');
-        key.classList.add('pressed');
         key.setAttribute("value", "2");
         console.log("value: " + key.getAttribute("value"));
         console.log(`lastKeyCode: ${lastKeyCode}`);
     } else if (key.getAttribute("value") == "2" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}3sound.mp3`);
-        audio.play();
         img.setAttribute("src", `img/${letters[e.keyCode]}3.jpg`);
-        img.style.top = "30%";
-        img.classList.add('rotate-img');
-        key.classList.add('pressed');
         key.setAttribute("value", "3");
         console.log("value: " + key.getAttribute("value"));
         console.log(`lastKeyCode: ${lastKeyCode}`);
     } else if (key.getAttribute("value") == "3" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}4sound.mp3`);
-        audio.play();
         img.setAttribute("src", `img/${letters[e.keyCode]}4.jpg`);
-        img.style.top = "30%";
-        img.classList.add('rotate-img');
-        key.classList.add('pressed');
         key.setAttribute("value", "4");
         console.log("value: " + key.getAttribute("value"));
         console.log(`lastKeyCode: ${lastKeyCode}`);
     } else {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}1sound.mp3`);
-        audio.play();
         img.setAttribute("src", `img/${letters[e.keyCode]}1.jpg`);
-        img.style.top = "30%";
-        img.classList.add('rotate-img');
         lastKeyCode = e.keyCode;
         key.setAttribute("value", "1");
-        key.classList.add('pressed');
         console.log("letter: " + letters[e.keyCode]);
         console.log(`lastKeyCode: ${lastKeyCode}`);
         console.log("this key is now assigned value: " + key.getAttribute("value"));
     }
 
     console.log("keycode: " + e.keyCode);
+
+    audio.play();
+    img.style.top = "30%";
+    img.classList.add('rotate-img');
+    key.classList.add('pressed');
     audio.currentTime = 0;
 });
 
 // remove class 'pressed'
 function removeKeyPressed(e) {
     if (e.propertyName !== 'transform') return;
-    // 'this' => keys
-    this.classList.remove('pressed');
+    this.classList.remove('pressed');  // 'this' => keys
 }
 
-// remove class 'rotate-img' and reset img's top position to 100%
+// remove class 'rotate-img'
 function removeImgRotate(e) {
-    if (e.propertyName !== "transform")
-        return;
-    // 'this' => img
-    this.classList.remove('rotate-img');
-    // this.style.top = "100%";
+    if (e.propertyName !== "transform") return;
+    this.classList.remove('rotate-img');  // 'this' => img
 }
 
-// Hide title_sec "ABCLoop" if height less than 640px
+//  Hide logo 'ABCLoop' to keep content intact within short device's height
 if (screen.height <= 640) {
-    const title = document.querySelector(".title_sec");
     const window = document.querySelector(".window");
+    const title = document.querySelector(".title_sec");
+
+    window.style.marginTop = "10px";
     title.style.display = "none";
-    window.style.marginTop = "20px";
 }
 
 // After transition animations end, run functions to remove classes
 img.addEventListener('transitionend', removeImgRotate);
 keys.forEach(key => key.addEventListener('transitionend', removeKeyPressed));
+
+// Get current year
+let date = new Date();
+document.getElementById("copyright").textContent = date.getFullYear();
