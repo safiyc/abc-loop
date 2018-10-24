@@ -1,0 +1,77 @@
+26 objects (abc..z)
+
+example object 'a':
+{65: "a", sound1: "a", sound2: 'apple', sound3: 'airplane', img1: ?, img2: ?, img3: ?}
+
+or example object 'a':
+{65: "a"}
+
+filename conventions:
+a1sound, a2sound, a3sound
+a1img, a2img, a3img
+
+------------------
+todo:
+X-keydown through sound files
+X-reset sound loop at different key pressed
+X-correct sound file loads according to key pressed
+X-correct img file loads
+
+X-img rotates into view
+-img moves into view from left or right
+-letters clickable
+-letters touchable (mobile)
+?-letter casing switch OR change font
+-reload webpage
+-layout of webpage
+
+-refactor code
+
+?-press 'a', display "Aa", then random a2/a3/a4
+?-img into view from left or right
+
+-create sound files
+-create img files
+-create word files
+-create readme.md
+
+----------
+buttons:
+-a to z
+-switch letter casing
+-refresh (reload screen, when freeze error, etc)
+
+layout:
+-columns: 6
+-rows: 5
+
+content:
+?1 = "?"
+?2 = "fruit"
+?3 = "animal"
+?4 = "object: toy, household, outside, etc"
+
+a1 = "A"
+a2 = "Apple"
+a3 = "Ant"
+a4 = "Airplane"
+
+b2 = banana
+b3 = bird
+b4 = ball
+
+c2 = carrot
+c3 = cat
+c4 = car
+
+d2 = durian
+d3 = deer
+d4 = door
+
+e2 = eggplant
+e3 = eagle
+e4 = earth
+
+f2 = fig
+f3 = fox
+f4 = football
