@@ -18,6 +18,7 @@ X-add transparent curtains
 
 -letter casing switch btn
 -reload webpage btn
+-onload/reload: animate curtains open
 
 -letters clickable
 -letters touchable (mobile)
