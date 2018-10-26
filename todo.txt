@@ -8,6 +8,9 @@ X-layout of webpage
 X-img rotates into view
 X-add perspective rug
 X-add transparent curtains
+X-keydown btn switch letter casing
+X-click btn switch letter casing
+X-letters clickable
 
 -img moves into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
 -display word on keydown
@@ -18,12 +21,9 @@ X-add transparent curtains
 -improve glass window effect (css animate window; 'flash' on letter click?)
 -fix no footer display when using nexus 6p
 
-X-click btn switch letter casing
--keydown btn switch letter casing
 -reload webpage btn
 -onload/reload: animate curtains open
 
-x-letters clickable
 -letters touchable (mobile)
 
 -refactor code!

@@ -235,7 +235,7 @@ img {
     margin: 0 auto;
 }
 
-.key {
+.key, .casing {
     position: relative;
     width: 3.5rem;
     height: 3.5rem;
@@ -253,18 +253,6 @@ img {
     font-family: 'Montserrat', sans-serif;
     text-shadow: 0 0 4px rgba(0, 0, 0, .9);
 }
-
-/* kbd {
-    font-size: 2.5rem;
-    font-family: 'Montserrat', sans-serif;
-    text-shadow: 0 0 4px rgba(0, 0, 0, .9);
-} */
-
-/* .w-letter {
-    position: absolute;
-    transform: scale(.95);
-    right: .05rem;
-} */
 
 .letter-casing {
     position: absolute;

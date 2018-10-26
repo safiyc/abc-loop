@@ -8,7 +8,9 @@ const letters = {
 };
 let lastKeyCode;
 
-// Run this when key is pressed
+// Run this when .key is keydown
+// Loop thru 4 levels of a letter; ex: "a", "apple", "ant", "airplane"
+// Loop resets to lev1 when different letter is pressed
 function abcLoop(e) {
     const audio = document.querySelector(`audio[data-keycode="${e.keyCode}"]`);
     const key = document.querySelector(`.key[data-keycode="${e.keyCode}"]`);
@@ -72,10 +74,13 @@ if (screen.height <= 640) {
     title.style.display = "none";
 }
 
-// Keydown loops thru 4 levels of key; ex: "a", "apple", "ant", "airplane"
-// Loop resets to lev1 when different key is pressed
+// Keydown event
 window.addEventListener('keydown', function (e) {
-    abcLoop(e);
+    if (e.keyCode == 16) {
+        switchCase();
+    } else {
+        abcLoop(e);
+    }
 });
 
 // code works, but needs serious refactor
@@ -84,7 +89,6 @@ for (let i = 0; i <= 25; i++) {
     keys[i].addEventListener('click', function () {
         let ltr = i + 65;
         const audio = document.querySelector(`audio[data-keycode="${ltr}"]`);
-        const key = document.querySelector(`.key[data-keycode="${ltr}"]`);
 
         // confirms value of key in loop
         // file naming conventions: sound-> a1sound, a2sound, a3sound; img -> b1, b2, b3
@@ -126,7 +130,12 @@ document.getElementById("copyright").textContent = date.getFullYear();
 const casingBtn = document.querySelector(".letter-casing");
 // Click to switch casing of letters
 casingBtn.addEventListener("click", function () {
-    for(let i = 0; i <=25; i++) {
+    switchCase();
+});
+
+// Run this when keydown/click of casingBtn
+function switchCase () {
+    for (let i = 0; i <= 25; i++) {
         let text = keys[i].textContent;
         if (text == text.toUpperCase()) {
             console.log("now lower case");
@@ -136,20 +145,4 @@ casingBtn.addEventListener("click", function () {
             keys[i].textContent = text.toUpperCase();
         }
     }
-});
-
-// Keydown to switch casing of letters
-casingBtn.addEventListener("keydown", function(e) {
-    for(let i = 0; i <=25; i++) {
-        const shift = document.querySelector(`.letter-casing[data-keycode="${e.keyCode}"]`);
-        console.log(e.keyCode);
-        // let text = keys[i].textContent;
-        // if (text == text.toUpperCase()) {
-        //     console.log("now lower case");
-        //     keys[i].textContent = text.toLowerCase();
-        // } else {
-        //     console.log("now upper case");
-        //     keys[i].textContent = text.toUpperCase();
-        // }
-    }
-});
+}
