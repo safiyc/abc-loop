@@ -10,20 +10,23 @@ X-add perspective rug
 X-add transparent curtains
 
 -img moves into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
--display word on click
+-display word on keydown
+-display word on click/touch
 ?-jpg color-coded or js 'haiku' syllable color-coded
 ?-display word before img
 
 -improve glass window effect (css animate window; 'flash' on letter click?)
+-fix no footer display when using nexus 6p
 
--letter casing switch btn
+X-click btn switch letter casing
+-keydown btn switch letter casing
 -reload webpage btn
 -onload/reload: animate curtains open
 
--letters clickable
+x-letters clickable
 -letters touchable (mobile)
 
--refactor code
+-refactor code!
 
 ?-press 'a', display "Aa", then random a2/a3/a4
 

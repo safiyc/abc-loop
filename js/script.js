@@ -63,7 +63,7 @@ function removeImgRotate(e) {
     this.classList.remove('rotate-img');  // 'this' => img
 }
 
-//  Hide logo 'ABCLoop' to keep content intact within short device's height
+//  Hide logo 'ABCLoop' to keep content intact within short height devices
 if (screen.height <= 640) {
     const window = document.querySelector(".window");
     const title = document.querySelector(".title_sec");
@@ -80,7 +80,7 @@ window.addEventListener('keydown', function (e) {
 
 // code works, but needs serious refactor
 // Click on letters, instead of event keydown
-for (let i = 0; i < keys.length; i++) {
+for (let i = 0; i <= 25; i++) {
     keys[i].addEventListener('click', function () {
         let ltr = i + 65;
         const audio = document.querySelector(`audio[data-keycode="${ltr}"]`);
@@ -122,3 +122,34 @@ keys.forEach(key => key.addEventListener('transitionend', removeKeyPressed));
 // Get current year
 let date = new Date();
 document.getElementById("copyright").textContent = date.getFullYear();
+
+const casingBtn = document.querySelector(".letter-casing");
+// Click to switch casing of letters
+casingBtn.addEventListener("click", function () {
+    for(let i = 0; i <=25; i++) {
+        let text = keys[i].textContent;
+        if (text == text.toUpperCase()) {
+            console.log("now lower case");
+            keys[i].textContent = text.toLowerCase();
+        } else {
+            console.log("now upper case");
+            keys[i].textContent = text.toUpperCase();
+        }
+    }
+});
+
+// Keydown to switch casing of letters
+casingBtn.addEventListener("keydown", function(e) {
+    for(let i = 0; i <=25; i++) {
+        const shift = document.querySelector(`.letter-casing[data-keycode="${e.keyCode}"]`);
+        console.log(e.keyCode);
+        // let text = keys[i].textContent;
+        // if (text == text.toUpperCase()) {
+        //     console.log("now lower case");
+        //     keys[i].textContent = text.toLowerCase();
+        // } else {
+        //     console.log("now upper case");
+        //     keys[i].textContent = text.toUpperCase();
+        // }
+    }
+});
