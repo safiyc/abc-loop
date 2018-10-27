@@ -11,6 +11,7 @@ X-add transparent curtains
 X-keydown btn switch letter casing
 X-click btn switch letter casing
 X-letters clickable
+X-reload webpage btn
 
 -img moves into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
 -display word on keydown
@@ -21,7 +22,6 @@ X-letters clickable
 -improve glass window effect (css animate window; 'flash' on letter click?)
 -fix no footer display when using nexus 6p
 
--reload webpage btn
 -onload/reload: animate curtains open
 
 -letters touchable (mobile)

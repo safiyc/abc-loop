@@ -78,6 +78,8 @@ if (screen.height <= 640) {
 window.addEventListener('keydown', function (e) {
     if (e.keyCode == 16) {
         switchCase();
+    } else if (e.keyCode == 9) {
+        window.location.reload();
     } else {
         abcLoop(e);
     }
@@ -127,7 +129,7 @@ keys.forEach(key => key.addEventListener('transitionend', removeKeyPressed));
 let date = new Date();
 document.getElementById("copyright").textContent = date.getFullYear();
 
-const casingBtn = document.querySelector(".letter-casing");
+const casingBtn = document.querySelector(".casing-icon");
 // Click to switch casing of letters
 casingBtn.addEventListener("click", function () {
     switchCase();
@@ -146,3 +148,9 @@ function switchCase () {
         }
     }
 }
+
+const refresh = document.querySelector(".refresh-icon");
+// Click to refresh page to see onload animations; to fix keydown issue: letter stuck pressed
+refresh.addEventListener("click", function () {
+    window.location.reload();
+});
