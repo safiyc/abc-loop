@@ -20,7 +20,7 @@ X-reload webpage btn
 ?-display word before img
 
 -improve glass window effect (css animate window; 'flash' on letter click?)
--fix no footer display when using nexus 6p
+!-fix footer display on different heights
 
 -onload/reload: animate curtains open
 

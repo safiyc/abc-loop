@@ -1,11 +1,7 @@
 const img = document.querySelector("img");
 const keys = document.querySelectorAll('.key');
-// 'letters' for file naming purpose to get correct letter for keycode
-const letters = {
-    65: "a", 66: "b", 67: "c", 68: "d", 69: "e", 70: "f", 71: "g", 72: "h", 73: "i", 74: "j",
-    75: "k", 76: "l", 77: "m", 78: "n", 79: "o", 80: "p", 81: "q", 82: "r", 83: "s", 84: "t",
-    85: "u", 86: "v", 87: "w", 88: "x", 89: "y", 90: "z"
-};
+const word = document.querySelector('.word');
+
 let lastKeyCode;
 
 // Run this when .key is keydown
@@ -23,26 +19,34 @@ function abcLoop(e) {
         key.setAttribute("value", "2");
         console.log("value: " + key.getAttribute("value"));
         console.log(`lastKeyCode: ${lastKeyCode}`);
+
+        word.textContent = arrABC[(e.keyCode - 65)][1];
     } else if (key.getAttribute("value") == "2" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}3sound.mp3`);
         img.setAttribute("src", `img/${letters[e.keyCode]}3.jpg`);
         key.setAttribute("value", "3");
         console.log("value: " + key.getAttribute("value"));
         console.log(`lastKeyCode: ${lastKeyCode}`);
+
+        word.textContent = arrABC[(e.keyCode - 65)][2];
     } else if (key.getAttribute("value") == "3" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}4sound.mp3`);
         img.setAttribute("src", `img/${letters[e.keyCode]}4.jpg`);
         key.setAttribute("value", "4");
         console.log("value: " + key.getAttribute("value"));
         console.log(`lastKeyCode: ${lastKeyCode}`);
+
+        word.textContent = arrABC[(e.keyCode - 65)][3];
     } else {
-        audio.setAttribute("src", `sounds/${letters[e.keyCode]}1sound.mp3`);
+        audio.setAttribute("src", `sounds/a-to-z/${letters[e.keyCode]}.m4a`);
         img.setAttribute("src", `img/${letters[e.keyCode]}1.jpg`);
         lastKeyCode = e.keyCode;
         key.setAttribute("value", "1");
         console.log("letter: " + letters[e.keyCode]);
         console.log(`lastKeyCode: ${lastKeyCode}`);
         console.log("this key is now assigned value: " + key.getAttribute("value"));
+
+        word.textContent = arrABC[(e.keyCode - 65)][0];
     }
     console.log("keycode: " + e.keyCode);
 
@@ -107,7 +111,7 @@ for (let i = 0; i <= 25; i++) {
             img.setAttribute("src", `img/${letters[ltr]}4.jpg`);
             keys[i].setAttribute("value", "4");
         } else {
-            audio.setAttribute("src", `sounds/${letters[ltr]}1sound.mp3`);
+            audio.setAttribute("src", `sounds/a-to-z/${letters[ltr]}.m4a`);
             img.setAttribute("src", `img/${letters[ltr]}1.jpg`);
             lastKeyCode = ltr;
             keys[i].setAttribute("value", "1");
