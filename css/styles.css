@@ -220,8 +220,11 @@ h1 {
 
 img {
     position: absolute;
-    width: 6rem;
-    height: 6rem;
+    width: 9rem;
+    height: 9rem;
+    border: 5px dotted black;
+    /* border-radius: unset; */
+    padding: .25rem;
     top: 100%;  /* press key into view at 30% */
     /* to center img in div: width, left, right, margin-left, margin-right */
     left: 0;
@@ -233,8 +236,9 @@ img {
 }
 
 .rotate-img {
+    border-radius: 70px;
     transition: ease 1s;
-    transform: rotate(720deg);
+    transform: rotate(1080deg);
 }
 
 .keys {

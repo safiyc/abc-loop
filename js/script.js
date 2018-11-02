@@ -15,7 +15,7 @@ function abcLoop(e) {
     // file naming conventions: sound-> a1sound, a2sound, a3sound; img -> b1, b2, b3
     if (key.getAttribute("value") == "1" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}2sound.mp3`);
-        img.setAttribute("src", `img/${letters[e.keyCode]}2.jpg`);
+        img.setAttribute("src", `img/abc/${letters[e.keyCode]}2.png`);
         key.setAttribute("value", "2");
         console.log("value: " + key.getAttribute("value"));
         console.log(`lastKeyCode: ${lastKeyCode}`);
@@ -23,7 +23,7 @@ function abcLoop(e) {
         word.textContent = arrABC[(e.keyCode - 65)][1];
     } else if (key.getAttribute("value") == "2" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}3sound.mp3`);
-        img.setAttribute("src", `img/${letters[e.keyCode]}3.jpg`);
+        img.setAttribute("src", `img/abc/${letters[e.keyCode]}3.png`);
         key.setAttribute("value", "3");
         console.log("value: " + key.getAttribute("value"));
         console.log(`lastKeyCode: ${lastKeyCode}`);
@@ -31,7 +31,7 @@ function abcLoop(e) {
         word.textContent = arrABC[(e.keyCode - 65)][2];
     } else if (key.getAttribute("value") == "3" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}4sound.mp3`);
-        img.setAttribute("src", `img/${letters[e.keyCode]}4.jpg`);
+        img.setAttribute("src", `img/abc/${letters[e.keyCode]}4.png`);
         key.setAttribute("value", "4");
         console.log("value: " + key.getAttribute("value"));
         console.log(`lastKeyCode: ${lastKeyCode}`);
@@ -39,7 +39,7 @@ function abcLoop(e) {
         word.textContent = arrABC[(e.keyCode - 65)][3];
     } else {
         audio.setAttribute("src", `sounds/a-to-z/${letters[e.keyCode]}.m4a`);
-        img.setAttribute("src", `img/${letters[e.keyCode]}1.jpg`);
+        img.setAttribute("src", `img/abc/${letters[e.keyCode]}1.png`);
         lastKeyCode = e.keyCode;
         key.setAttribute("value", "1");
         console.log("letter: " + letters[e.keyCode]);
@@ -100,21 +100,29 @@ for (let i = 0; i <= 25; i++) {
         // file naming conventions: sound-> a1sound, a2sound, a3sound; img -> b1, b2, b3
         if (keys[i].getAttribute("value") == "1" && ltr == lastKeyCode) {
             audio.setAttribute("src", `sounds/${letters[ltr]}2sound.mp3`);
-            img.setAttribute("src", `img/${letters[ltr]}2.jpg`);
+            img.setAttribute("src", `img/abc/${letters[ltr]}2.png`);
             keys[i].setAttribute("value", "2");
+
+            word.textContent = arrABC[(i)][1];
         } else if (keys[i].getAttribute("value") == "2" && ltr == lastKeyCode) {
             audio.setAttribute("src", `sounds/${letters[ltr]}3sound.mp3`);
-            img.setAttribute("src", `img/${letters[ltr]}3.jpg`);
+            img.setAttribute("src", `img/abc/${letters[ltr]}3.png`);
             keys[i].setAttribute("value", "3");
+
+            word.textContent = arrABC[(i)][2];
         } else if (keys[i].getAttribute("value") == "3" && ltr == lastKeyCode) {
             audio.setAttribute("src", `sounds/${letters[ltr]}4sound.mp3`);
-            img.setAttribute("src", `img/${letters[ltr]}4.jpg`);
+            img.setAttribute("src", `img/abc/${letters[ltr]}4.png`);
             keys[i].setAttribute("value", "4");
+
+            word.textContent = arrABC[(i)][3];
         } else {
             audio.setAttribute("src", `sounds/a-to-z/${letters[ltr]}.m4a`);
-            img.setAttribute("src", `img/${letters[ltr]}1.jpg`);
+            img.setAttribute("src", `img/abc/${letters[ltr]}1.png`);
             lastKeyCode = ltr;
             keys[i].setAttribute("value", "1");
+
+            word.textContent = arrABC[(i)][0];
         }
 
         audio.play();

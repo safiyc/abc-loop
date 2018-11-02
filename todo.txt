@@ -1,5 +1,4 @@
-
-todo:
+<todo>
 X-keydown through sound files
 X-reset sound loop at different key pressed
 X-correct sound file loads according to key pressed
@@ -12,28 +11,31 @@ X-keydown btn switch letter casing
 X-click btn switch letter casing
 X-letters clickable
 X-reload webpage btn
+X-display word on keydown/click
+X-create word files
+X-create img files - 250x250
+X-create img a-z files
 
--img moves into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
--display word on keydown
--display word on click/touch
-?-jpg color-coded or js 'haiku' syllable color-coded
-?-display word before img
+X?-fix footer display on different heights
 
+-img into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
 -improve glass window effect (css animate window; 'flash' on letter click?)
-!-fix footer display on different heights
-
 -onload/reload: animate curtains open
+-animate truck moves left or truck moves right
 
 -letters touchable (mobile)
 
+-create sound files
+-create readme.md
+
 -refactor code!
 
+?-jpg color-coded or js 'haiku' syllable color-coded
+?-display word before img
 ?-press 'a', display "Aa", then random a2/a3/a4
 
--create sound files
--create img files
--create word files
--create readme.md
+
+</todo>
 
 ----------
 buttons:
@@ -46,37 +48,10 @@ layout:
 -rows: 5
 
 content:
-?1 = "?"
+?1 = "Aa"
 ?2 = "fruit"
 ?3 = "animal"
 ?4 = "object: toy, household, outside, etc"
-
-a1 = "A"
-a2 = "Apple"
-a3 = "Ant"
-a4 = "Airplane"
-
-b2 = banana
-b3 = bird
-b4 = ball
-
-c2 = carrot
-c3 = cat
-c4 = car
-
-d2 = durian
-d3 = deer
-d4 = door
-
-e2 = eggplant
-e3 = eagle
-e4 = earth
-
-f2 = fig
-f3 = fox
-f4 = football
-
-----------------------
 
 filename conventions:
 sound: a1sound, a2sound, a3sound
