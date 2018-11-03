@@ -15,24 +15,22 @@ X-display word on keydown/click
 X-create word files
 X-create img files - 250x250
 X-create img a-z files
-
 X?-fix footer display on different heights
 
--img into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
--improve glass window effect (css animate window; 'flash' on letter click?)
--onload/reload: animate curtains open
--animate truck moves left or truck moves right
-
--letters touchable (mobile)
-
 -create sound files
+-abc song file
+-desktop screen: bigger window/blocks, less block columns
+-letters touchable (mobile)
+-refactor code!
 -create readme.md
 
--refactor code!
-
-?-jpg color-coded or js 'haiku' syllable color-coded
-?-display word before img
-?-press 'a', display "Aa", then random a2/a3/a4
+extra features-
+-onload/reload: animate curtains open
+-animate truck moves left or truck moves right
+-img into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
+-improve glass window effect (css animate window; 'flash' on letter click?)
+?-color-coded syllables of word (use haiku project as code ref)
+??-press 'a', display "Aa", then random a2/a3/a4
 
 
 </todo>
