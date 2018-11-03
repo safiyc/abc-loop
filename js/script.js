@@ -12,9 +12,9 @@ function abcLoop(e) {
     const key = document.querySelector(`.key[data-keycode="${e.keyCode}"]`);
 
     // confirms value of key in loop
-    // file naming conventions: sound-> a1sound, a2sound, a3sound; img -> b1, b2, b3
+    // file naming conventions: sound-> a1, a2, a3; img -> b1, b2, b3
     if (key.getAttribute("value") == "1" && e.keyCode == lastKeyCode) {
-        audio.setAttribute("src", `sounds/${letters[e.keyCode]}2sound.mp3`);
+        audio.setAttribute("src", `sounds/${letters[e.keyCode]}2.m4a`);
         img.setAttribute("src", `img/abc/${letters[e.keyCode]}2.png`);
         key.setAttribute("value", "2");
         console.log("value: " + key.getAttribute("value"));
@@ -22,7 +22,7 @@ function abcLoop(e) {
 
         word.textContent = arrABC[(e.keyCode - 65)][1];
     } else if (key.getAttribute("value") == "2" && e.keyCode == lastKeyCode) {
-        audio.setAttribute("src", `sounds/${letters[e.keyCode]}3sound.mp3`);
+        audio.setAttribute("src", `sounds/${letters[e.keyCode]}3.m4a`);
         img.setAttribute("src", `img/abc/${letters[e.keyCode]}3.png`);
         key.setAttribute("value", "3");
         console.log("value: " + key.getAttribute("value"));
@@ -30,7 +30,7 @@ function abcLoop(e) {
 
         word.textContent = arrABC[(e.keyCode - 65)][2];
     } else if (key.getAttribute("value") == "3" && e.keyCode == lastKeyCode) {
-        audio.setAttribute("src", `sounds/${letters[e.keyCode]}4sound.mp3`);
+        audio.setAttribute("src", `sounds/${letters[e.keyCode]}4.m4a`);
         img.setAttribute("src", `img/abc/${letters[e.keyCode]}4.png`);
         key.setAttribute("value", "4");
         console.log("value: " + key.getAttribute("value"));
@@ -79,11 +79,18 @@ if (screen.height <= 640) {
 }
 
 // Keydown event
+// '16' = shift key; 8' = backspace key; '187' = equals key
 window.addEventListener('keydown', function (e) {
     if (e.keyCode == 16) {
         switchCase();
-    } else if (e.keyCode == 9) {
+    } else if (e.keyCode == 8) {
         window.location.reload();
+    } else if (e.keyCode == 187) {
+        if (song.currentTime > 0) {
+            stopSong();
+        } else {
+            playSong();
+        }
     } else {
         abcLoop(e);
     }
@@ -97,21 +104,21 @@ for (let i = 0; i <= 25; i++) {
         const audio = document.querySelector(`audio[data-keycode="${ltr}"]`);
 
         // confirms value of key in loop
-        // file naming conventions: sound-> a1sound, a2sound, a3sound; img -> b1, b2, b3
+        // file naming conventions: sound-> a1, a2, a3; img -> b1, b2, b3
         if (keys[i].getAttribute("value") == "1" && ltr == lastKeyCode) {
-            audio.setAttribute("src", `sounds/${letters[ltr]}2sound.mp3`);
+            audio.setAttribute("src", `sounds/${letters[ltr]}2.m4a`);
             img.setAttribute("src", `img/abc/${letters[ltr]}2.png`);
             keys[i].setAttribute("value", "2");
 
             word.textContent = arrABC[(i)][1];
         } else if (keys[i].getAttribute("value") == "2" && ltr == lastKeyCode) {
-            audio.setAttribute("src", `sounds/${letters[ltr]}3sound.mp3`);
+            audio.setAttribute("src", `sounds/${letters[ltr]}3.m4a`);
             img.setAttribute("src", `img/abc/${letters[ltr]}3.png`);
             keys[i].setAttribute("value", "3");
 
             word.textContent = arrABC[(i)][2];
         } else if (keys[i].getAttribute("value") == "3" && ltr == lastKeyCode) {
-            audio.setAttribute("src", `sounds/${letters[ltr]}4sound.mp3`);
+            audio.setAttribute("src", `sounds/${letters[ltr]}4.m4a`);
             img.setAttribute("src", `img/abc/${letters[ltr]}4.png`);
             keys[i].setAttribute("value", "4");
 
@@ -159,6 +166,29 @@ function switchCase () {
             keys[i].textContent = text.toUpperCase();
         }
     }
+}
+
+const songBtn = document.querySelector(".play-icon");
+const song = document.querySelector('audio[name="song"');
+// Click to play abc song
+songBtn.addEventListener("click", function () {
+    if (song.currentTime > 0) {
+        stopSong();
+    } else {
+        playSong();
+    }
+});
+
+function playSong() {
+    song.setAttribute("src", "sounds/abc-song.mp3");
+    songBtn.style.backgroundImage = "url('img/icon-stop.png')";
+    song.play();
+}
+
+function stopSong() {
+    songBtn.style.backgroundImage = "url('img/icon-play.png')";
+    song.pause();
+    song.currentTime = 0;
 }
 
 const refresh = document.querySelector(".refresh-icon");

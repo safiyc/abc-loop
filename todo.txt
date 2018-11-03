@@ -16,9 +16,11 @@ X-create word files
 X-create img files - 250x250
 X-create img a-z files
 X?-fix footer display on different heights
+X-create sound files
+X-abc song file
+X-click/press play/stop abc song
 
--create sound files
--abc song file
+-info btn (displays keyboard info)
 -desktop screen: bigger window/blocks, less block columns
 -letters touchable (mobile)
 -refactor code!
@@ -52,5 +54,5 @@ content:
 ?4 = "object: toy, household, outside, etc"
 
 filename conventions:
-sound: a1sound, a2sound, a3sound
+sound: a1, a2, a3
 img: a1, a2, a3

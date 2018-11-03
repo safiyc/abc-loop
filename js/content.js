@@ -12,7 +12,7 @@ const arrABC = [
     ["Cc", "carrots", "cat", "car"], 
     ["Dd", "dates", "dolphin", "door"], 
     ["Ee", "eggplant", "elephant", "earth"], 
-    ["Ff", "figs", "fish", "fire engine"], 
+    ["Ff", "figs", "fish", "fire truck"], 
     ["Gg", "grapes", "gecko", "guitar"], 
     ["Hh", "honey", "horse", "house"], 
     ["Ii", "ice cream", "iguana", "island"], 
