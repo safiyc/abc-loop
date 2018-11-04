@@ -1,6 +1,8 @@
 const img = document.querySelector("img");
 const keys = document.querySelectorAll('.key');
 const word = document.querySelector('.word');
+const songBtn = document.querySelector(".play-icon");
+const song = document.querySelector('audio[name="song"');
 
 let lastKeyCode;
 
@@ -11,6 +13,8 @@ function abcLoop(e) {
     const audio = document.querySelector(`audio[data-keycode="${e.keyCode}"]`);
     const key = document.querySelector(`.key[data-keycode="${e.keyCode}"]`);
 
+    // stop abc song when other btns pressed
+    stopSong();
     // confirms value of key in loop
     // file naming conventions: sound-> a1, a2, a3; img -> b1, b2, b3
     if (key.getAttribute("value") == "1" && e.keyCode == lastKeyCode) {
@@ -103,6 +107,9 @@ for (let i = 0; i <= 25; i++) {
         let ltr = i + 65;
         const audio = document.querySelector(`audio[data-keycode="${ltr}"]`);
 
+        // stop abc song when other btns pressed
+        stopSong();
+
         // confirms value of key in loop
         // file naming conventions: sound-> a1, a2, a3; img -> b1, b2, b3
         if (keys[i].getAttribute("value") == "1" && ltr == lastKeyCode) {
@@ -159,17 +166,15 @@ function switchCase () {
     for (let i = 0; i <= 25; i++) {
         let text = keys[i].textContent;
         if (text == text.toUpperCase()) {
-            console.log("now lower case");
+            console.log("now lowercase");
             keys[i].textContent = text.toLowerCase();
         } else {
-            console.log("now upper case");
+            console.log("now uppercase");
             keys[i].textContent = text.toUpperCase();
         }
     }
 }
 
-const songBtn = document.querySelector(".play-icon");
-const song = document.querySelector('audio[name="song"');
 // Click to play abc song
 songBtn.addEventListener("click", function () {
     if (song.currentTime > 0) {
@@ -179,16 +184,54 @@ songBtn.addEventListener("click", function () {
     }
 });
 
+// var declared to set and clear time interval
+// var songImgTimer;
 function playSong() {
     song.setAttribute("src", "sounds/abc-song.mp3");
     songBtn.style.backgroundImage = "url('img/icon-stop.png')";
     song.play();
+    
+    // fix: display letters one by one as song plays
+    let i = 0;
+    // if (i == 90) {
+    //     return;
+    // } else if (65 <= i <= 72) {
+    //     songImgTimer = setInterval(function() {
+    //         img.setAttribute("src", `img/abc/${letters[65 + i]}1.png`);
+    //         img.style.top = "30%";
+    //         console.log(letters[65 + i]);
+    //         i++;
+    //     }, 500);
+    // } else if (73 <= i <= 75) {
+    //     songImgTimer = setInterval(function () {
+    //         img.setAttribute("src", `img/abc/${letters[65 + i]}1.png`);
+    //         img.style.top = "30%";
+    //     }, 650);
+    // } else if (76 <= i <= 80) {
+    //     songImgTimer = setInterval(function () {
+    //         img.setAttribute("src", `img/abc/${letters[65 + i]}1.png`);
+    //         img.style.top = "30%";
+    //     }, 400);
+    // } else if (76 <= i <= 80) {
+    //     songImgTimer = setInterval(function () {
+    //         img.setAttribute("src", `img/abc/${letters[65 + i]}1.png`);
+    //         img.style.top = "30%";
+    //     }, 400);
+    // }
 }
 
 function stopSong() {
     songBtn.style.backgroundImage = "url('img/icon-play.png')";
     song.pause();
     song.currentTime = 0;
+
+    // clearInterval(songImgTimer);
+}
+
+// when song ends, change stop icon back to play icon
+song.onended = function () {
+    songBtn.style.backgroundImage = "url('img/icon-play.png')";
+    // clearInterval(songImgTimer);
 }
 
 const refresh = document.querySelector(".refresh-icon");

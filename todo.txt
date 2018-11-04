@@ -19,12 +19,15 @@ X?-fix footer display on different heights
 X-create sound files
 X-abc song file
 X-click/press play/stop abc song
+X-fix: when song ends, icon should return to play icon
+X-fix: stop song when other btns pressed
+X-create readme.md
 
+-display letters when song plays
 -info btn (displays keyboard info)
 -desktop screen: bigger window/blocks, less block columns
 -letters touchable (mobile)
 -refactor code!
--create readme.md
 
 extra features-
 -onload/reload: animate curtains open
