@@ -22,8 +22,9 @@ X-click/press play/stop abc song
 X-fix: when song ends, icon should return to play icon
 X-fix: stop song when other btns pressed
 X-create readme.md
+X-display letters when song plays (use ontimeupdate and currentTime to determine what letter img displays)
 
--display letters when song plays
+-fix: abc-song letter imgs to abc-song
 -info btn (displays keyboard info)
 -desktop screen: bigger window/blocks, less block columns
 -letters touchable (mobile)
@@ -37,8 +38,8 @@ extra features-
 ?-color-coded syllables of word (use haiku project as code ref)
 ??-press 'a', display "Aa", then random a2/a3/a4
 
-
 </todo>
+
 
 ----------
 buttons:

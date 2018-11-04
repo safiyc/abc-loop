@@ -26,7 +26,7 @@ const arrABC = [
     ["Qq", "q-tip", "quail", "quarter"], 
     ["Rr", "rice", "rooster", "rainbow"],
     ["Ss", "salad", "seal", "shoes"], 
-    ["Tt", "tomatoes", "tiger", "tent"],
+    ["Tt", "tomatoe", "tiger", "tent"],
     ["Uu", "utensils", "unicorn", "umbrella"], 
     ["Vv", "vase", "van", "vacuum"],
     ["Ww", "watermelon", "whale", "window"], 
