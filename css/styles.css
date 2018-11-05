@@ -10,6 +10,8 @@ body, html {
     font-family: 'Montserrat', sans-serif;
     margin: 0 auto;
     min-width: 360px;
+    background-color: #d4b054;
+    height: 100%;
 }
 
 body {
@@ -29,14 +31,12 @@ body {
                 inset 0 -40px 0 0 rgb(238, 228, 224), 
                 inset 0 -46px 12px -4px rgba(0, 0, 0, .2), 
                 0 2px 5px -3px rgba(0, 0, 0, .75);
-    flex-shrink: 0;
     position: relative;
-    min-height: 595px;
+    height: 600px;
 }
 
 .floor {
-    flex: 1 0 auto;
-    height: 70px;
+    height: calc(100% - 600px); /* 100% minus walls height; parent(body,html) must have height defined) */
     background: #aa7f12; /* Old browsers */
     background: -moz-linear-gradient(top, #d4b054 0%, #aa7f12 100%);
     background: -webkit-linear-gradient(top, #d4b054 0%,#aa7f12 100%);
@@ -171,7 +171,7 @@ h1 {
 /* scenery outside of house */
 .outside {
     position: absolute;
-    /* to center img in div: width, left, right, margin-left, margin-right */
+    /* to center img in div: left, right, margin-left, margin-right */
     left: 0;
     right: 0;
     margin-left: auto;
@@ -216,15 +216,15 @@ img {
 }
 
 .music-note {
-    -webkit-animation-name: rotate-color; /* Safari 4.0 - 8.0 */
+    -webkit-animation-name: color-change; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
     -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
-    animation-name: rotate-color;
+    animation-name: color-change;
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
 /* Safari 4.0 - 8.0 */
-@-webkit-keyframes rotate-color {
+@-webkit-keyframes color-change {
     0%   {background-color:red;}
     25%  {background-color:yellow;}
     50%  {background-color:blue;}
@@ -232,7 +232,7 @@ img {
     100% {background-color:red;}
 }
 /* Standard syntax */
-@keyframes rotate-color {
+@keyframes color-change {
     0%   {background-color:red;}
     25%  {background-color:yellow;}
     50%  {background-color:blue;}
@@ -247,15 +247,12 @@ img {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     width: 90%;
     max-width: 390px;
-    margin: 0 auto;
 }
 
 .block {
@@ -316,6 +313,7 @@ img {
     /* .png shadow effect: */
     -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
+    /*  */
 }
 
 .play-icon {
@@ -326,7 +324,6 @@ img {
     transform: scale(1.15);
     background: url("../img/icon-play.png");
     background-size: cover;
-    /* .png shadow effect: */
     -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
 }
@@ -339,7 +336,6 @@ img {
     transform: scale(1.15);
     background: url("../img/icon-info.png");
     background-size: cover;
-    /* .png shadow effect: */
     -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
 }
@@ -371,13 +367,54 @@ img {
     z-index: 50;
 }
 
-/* Tablet screens and up*/
-@media (min-width: 480px) {
-    body {
-        width: 480px;
+/* laptop screen and up */
+@media (min-width: 600px) {
+    body, html {
+        max-width: 600px;
+        background-color: unset;
         background: url("../img/wall-star-dark.jpg");
         background-size: 350px;
         background-repeat: repeat;
         box-shadow: 0 0 2px 4px rgba(210, 210, 255, .65);
     }
+
+    .window {
+        height: 18rem;
+    }
+
+    .window-frame-glass {
+        height: 18rem;
+    }
+
+    .curtain {
+        height: 21rem;
+    }
+
+    .curtain-left {
+        width: 8rem;
+    }
+
+    .curtain-right {
+        width: 6rem;
+    }
+
+    .blocks {
+        justify-content: center;
+        width: 100%;
+        max-width: unset;
+    }
+
+    .block {
+        margin: 0 2px;
+    }
+
+    .black_blocks {
+        margin: 0 2px;
+    }
+
+    .floor {
+        height: calc(100% - 550px); /* 100% minus walls height; parent(body,html) must have height defined) */
+        perspective: 325px;
+    }
+
 }

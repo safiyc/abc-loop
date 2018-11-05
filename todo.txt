@@ -23,10 +23,10 @@ X-fix: when song ends, icon should return to play icon
 X-fix: stop song when other btns pressed
 X-create readme.md
 X-display letters when song plays (use ontimeupdate and currentTime to determine what letter img displays)
+X?-desktop screen: bigger window/blocks, less block columns
 
--fix: abc-song letter imgs to abc-song
+-fix: letters sync w/song
 -info btn (displays keyboard info)
--desktop screen: bigger window/blocks, less block columns
 -letters touchable (mobile)
 -refactor code!
 

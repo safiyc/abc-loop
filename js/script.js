@@ -25,34 +25,24 @@ function abcLoop(e) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}2.m4a`);
         img.setAttribute("src", `img/abc/${letters[e.keyCode]}2.png`);
         key.setAttribute("value", "2");
-        console.log("value: " + key.getAttribute("value"));
-        console.log(`lastKeyCode: ${lastKeyCode}`);
         word.textContent = arrABC[(e.keyCode - 65)][1];
     } else if (key.getAttribute("value") == "2" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}3.m4a`);
         img.setAttribute("src", `img/abc/${letters[e.keyCode]}3.png`);
         key.setAttribute("value", "3");
-        console.log("value: " + key.getAttribute("value"));
-        console.log(`lastKeyCode: ${lastKeyCode}`);
         word.textContent = arrABC[(e.keyCode - 65)][2];
     } else if (key.getAttribute("value") == "3" && e.keyCode == lastKeyCode) {
         audio.setAttribute("src", `sounds/${letters[e.keyCode]}4.m4a`);
         img.setAttribute("src", `img/abc/${letters[e.keyCode]}4.png`);
         key.setAttribute("value", "4");
-        console.log("value: " + key.getAttribute("value"));
-        console.log(`lastKeyCode: ${lastKeyCode}`);
         word.textContent = arrABC[(e.keyCode - 65)][3];
     } else {
         audio.setAttribute("src", `sounds/a-to-z/${letters[e.keyCode]}.m4a`);
         img.setAttribute("src", `img/abc/${letters[e.keyCode]}1.png`);
         lastKeyCode = e.keyCode;
         key.setAttribute("value", "1");
-        console.log("letter: " + letters[e.keyCode]);
-        console.log(`lastKeyCode: ${lastKeyCode}`);
-        console.log("this key is now assigned value: " + key.getAttribute("value"));
         word.textContent = arrABC[(e.keyCode - 65)][0];
     }
-    console.log("keycode: " + e.keyCode);
 
     audio.play();
     img.style.top = "30%";
@@ -71,15 +61,6 @@ function removeKeyPressed(e) {
 function removeImgRotate(e) {
     if (e.propertyName !== "transform") return;
     this.classList.remove('rotate-img');  // 'this' => img
-}
-
-//  Hide logo 'ABCLoop' to keep content intact within short height devices
-if (screen.height <= 640) {
-    const window = document.querySelector(".window");
-    const title = document.querySelector(".title_sec");
-
-    window.style.marginTop = "10px";
-    title.style.display = "none";
 }
 
 // Keydown event
@@ -226,8 +207,8 @@ function songImgSync() {
     }, 600);
 }
 
-const casingBtn = document.querySelector(".casing-icon");
 // Click to switch casing of letters
+const casingBtn = document.querySelector(".casing-icon");
 casingBtn.addEventListener("click", function () {
     switchCase();
 });
@@ -249,6 +230,25 @@ function switchCase() {
 // Get current year
 let date = new Date();
 document.getElementById("copyright").textContent = date.getFullYear();
+
+// Hacky way to fix screen heights?
+//  Hide logo 'ABCLoop' to keep content intact within short height devices
+if (screen.height <= 640) {
+    const window = document.querySelector(".window");
+    const title = document.querySelector(".title_sec");
+
+    window.style.marginTop = "10px";
+    title.style.display = "none";
+}
+//  Increase margin-top of title and height of wall, so floor takes up less screen space
+if (screen.height >= 800) {
+    const wall = document.querySelector(".wall");
+    const title = document.querySelector(".title_sec");
+
+    wall.style.height = "775px";
+    title.style.marginTop = "40px";
+    title.style.marginBottom = "50px";
+}
 
 // Click to refresh page to see onload animations; to fix keydown issue: letter stuck pressed
 const refresh = document.querySelector(".refresh-icon");
