@@ -8,16 +8,14 @@
 An educational app to teach my nephew and kids ABC with words, images, and sounds by pressing a letter on the keyboard or clicking/touching on a letter block. Each letter has 4 levels. As the user triggers a letter consecutively, the program loops through words associated with said letter. The loop resets to level 1 of all letters when a triggered letter is different from the previous letter.
 
 ## Pending Tasks
-* Onload/reload: animate curtains open
-* Animate truck moves left or truck moves right
 * Img into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
 * Improve glass window effect (css animate window; 'flash' on letter click?)
 * Use colors to separate syllables of words
 * Revise to ES6
 * DRY
 
-## Bugs
-* No known bugs
+## Bugs/Issues
+* ABC song audio is not synced to images of letters
 
 ## Links
 

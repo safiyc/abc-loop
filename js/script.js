@@ -16,9 +16,6 @@ function abcLoop(e) {
     // stop abc song when a btn is pressed
     stopSong();
 
-    // remove class added at end of song
-    img.classList.remove("music-note");
-
     // confirms value of key in loop
     // file naming conventions: sound-> a1, a2, a3; img -> b1, b2, b3
     if (key.getAttribute("value") == "1" && e.keyCode == lastKeyCode) {
@@ -64,7 +61,7 @@ function removeImgRotate(e) {
 }
 
 // Keydown event
-// '16' => shift key; 8' => backspace key; '187' => equals key
+// '16' => shift key; 8' => backspace key; '187' => equals key; '37' & '39' => left, right keys
 window.addEventListener('keydown', function (e) {
     if (e.keyCode == 16) {
         switchCase();
@@ -76,22 +73,23 @@ window.addEventListener('keydown', function (e) {
         } else {
             playSong();
         }
-    } else {
+    } else if (e.keyCode == 37 || e.keyCode == 39) {   // issue: when 37||39 keyed, truck is effected at every position
+        moveTruck();
+    } else if (65 <= e.keyCode <= 90) {
         abcLoop(e);
+    }   else {
+        return;
     }
 });
 
 // Click on letters, instead of event keydown
 for (let i = 0; i <= 25; i++) {
     keys[i].addEventListener('click', function () {
-        let ltr = i + 65;
+        let ltr = i + 65;  // 65 => 'a'
         const audio = document.querySelector(`audio[data-keycode="${ltr}"]`);
 
         // stop abc song when other btns pressed
         stopSong();
-
-        // remove class added at end of song
-        img.classList.remove("music-note");
 
         // confirms value of key in loop
         // file naming conventions: sound-> a1, a2, a3; img -> b1, b2, b3
@@ -143,10 +141,10 @@ songBtn.addEventListener("click", function () {
 let songImgTimer;
 
 function playSong() {
-    word.textContent = "";
+    word.textContent = "ABC Song";
+    img.classList.add("music-note");
     song.setAttribute("src", "sounds/abc-song.mp3");
     songBtn.style.backgroundImage = "url('img/icon-stop.png')";
-    img.classList.add("music-note");
     song.play();   
     songImgSync();
 }
@@ -156,18 +154,20 @@ function stopSong() {
     song.pause();
     song.currentTime = 0;
     clearInterval(songImgTimer);
-    // remove class added at end of song
+    // remove class added near end of song
     img.classList.remove("music-note");
     img.style.top = "100%";
+    
+    // sound and img gone, then 'ABC Song' gone
+    setTimeout(function () {
+        word.textContent = "";
+    }, 250);
 }
 
-// when song ends, change stop icon back to play icon
+// Execute when song ends
 song.onended = function () {
-    songBtn.style.backgroundImage = "url('img/icon-play.png')";
-    clearInterval(songImgTimer);
-    // remove class added at end of song
-    img.classList.remove("music-note");
-    img.style.top = "100%";
+    console.log("song ended");
+    stopSong();
 }
 
 // To sync img to sound; still needs more work
@@ -194,7 +194,7 @@ function songImgSync() {
                 clearInterval(songImgTimer);
                 console.log("hey, stop here");
                 img.classList.add("music-note");
-                img.setAttribute("src", `img/music-note.png`);
+                img.setAttribute("src", "img/music-note.png");
             } else {
                 img.setAttribute("src", `img/abc/${letters[65 + j]}1.png`);
                 img.style.top = "30%";
@@ -227,25 +227,54 @@ function switchCase() {
     }
 }
 
+// Truck moves left or right
+const truck = document.querySelector(".truck");
+function moveTruck () {
+    if (truck.getAttribute("value") == "1") {
+        truck.style.right = "65%";
+
+        setTimeout(function () {
+            truck.classList.add("truck-flip");
+        }, 1100);
+
+        truck.setAttribute("value", "2");
+    } else {
+        truck.style.right = "10%";
+
+        setTimeout(function () {
+            truck.classList.remove("truck-flip");
+        }, 1100);
+
+        truck.setAttribute("value", "1");
+    }
+}
+
+// Click to move truck left or right
+truck.addEventListener("click", function() {
+    moveTruck();
+});
+
 // Get current year
 let date = new Date();
 document.getElementById("copyright").textContent = date.getFullYear();
 
 // Hacky way to fix screen heights?
-//  Hide logo 'ABCLoop' to keep content intact within short height devices
+// Hide logo 'ABCLoop' to keep content intact within short height devices
 if (screen.height <= 640) {
     const window = document.querySelector(".window");
     const title = document.querySelector(".title_sec");
+    const floor = document.querySelector(".floor");
 
-    window.style.marginTop = "10px";
+    window.style.marginTop = "0";
     title.style.display = "none";
+    floor.style.height = "calc(100% - 550px)";
 }
 //  Increase margin-top of title and height of wall, so floor takes up less screen space
 if (screen.height >= 800) {
     const wall = document.querySelector(".wall");
     const title = document.querySelector(".title_sec");
-
-    wall.style.height = "775px";
+    
+    wall.style.height = "950px";
     title.style.marginTop = "40px";
     title.style.marginBottom = "50px";
 }
@@ -255,3 +284,14 @@ const refresh = document.querySelector(".refresh-icon");
 refresh.addEventListener("click", function () {
     window.location.reload();
 });
+
+// IIFE - curtains open after x time of page load
+(function() {
+    setTimeout(function () {
+        const left = document.querySelector(".curtain-left");
+        const right = document.querySelector(".curtain-right");
+        
+        left.classList.add("open");
+        right.classList.add("open");
+    }, 500);
+})();

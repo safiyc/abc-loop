@@ -24,6 +24,8 @@ X-fix: stop song when other btns pressed
 X-create readme.md
 X-display letters when song plays (use ontimeupdate and currentTime to determine what letter img displays)
 X?-desktop screen: bigger window/blocks, less block columns
+X-onload/reload: animate curtains open
+X-animate truck moves left or truck moves right
 
 -fix: letters sync w/song
 -info btn (displays keyboard info)
@@ -31,8 +33,6 @@ X?-desktop screen: bigger window/blocks, less block columns
 -refactor code!
 
 extra features-
--onload/reload: animate curtains open
--animate truck moves left or truck moves right
 -img into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
 -improve glass window effect (css animate window; 'flash' on letter click?)
 ?-color-coded syllables of word (use haiku project as code ref)

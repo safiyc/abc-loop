@@ -32,7 +32,7 @@ body {
                 inset 0 -46px 12px -4px rgba(0, 0, 0, .2), 
                 0 2px 5px -3px rgba(0, 0, 0, .75);
     position: relative;
-    height: 600px;
+    height: 900px;
 }
 
 .floor {
@@ -121,15 +121,25 @@ h1 {
 
 .curtain-left {
     left: -6px;
-    width: 6rem;
+    width: 51.1%;
     background: url("../img/curtain-left.jpg");
+}
+
+.curtain-left.open {
+    transition: 1.5s;
+    width: 20%;
 }
 
 .curtain-right {
     right: -6px;
-    width: 4rem;
+    width: 51.1%;
     background: url("../img/curtain-right.jpg");
     background-position: 100% 0;
+}
+
+.curtain-right.open {
+    transition: 1.5s;
+    width: 10%;
 }
 
 .window-frame-glass {
@@ -166,6 +176,26 @@ h1 {
     font-size: 2rem;
     color: white;
     z-index: 150;
+}
+
+.truck {
+    position: absolute;
+    right: 10%;
+    bottom: 0;
+    height: 15%;
+    width: 12%;
+    background: url("../img/truck.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: ease 1s;  /* 1s is connected to moveTruck() */
+    z-index: 150;
+}
+
+/* flips left */
+.truck-flip {
+    -webkit-transform: scaleX(-1);  /* squiggly line isnt causing issue */
+    -transform: scaleX(-1);
 }
 
 /* scenery outside of house */
@@ -226,18 +256,32 @@ img {
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes color-change {
     0%   {background-color:red;}
-    25%  {background-color:yellow;}
-    50%  {background-color:blue;}
-    75%  {background-color:green;}
-    100% {background-color:red;}
+    23%  {background-color:yellow;}
+    25%  {background-color:white;}
+    27%  {background-color:yellow;}
+    48%  {background-color:blue;}
+    50%  {background-color:white;}
+    52%  {background-color:blue;}
+    73%  {background-color:green;}
+    75%  {background-color:white;}
+    77%  {background-color:green;}
+    98%  {background-color:red;}
+    100% {background-color:white;}
 }
 /* Standard syntax */
 @keyframes color-change {
-    0%   {background-color:red;}
-    25%  {background-color:yellow;}
-    50%  {background-color:blue;}
-    75%  {background-color:green;}
-    100% {background-color:red;}
+    0%   {background-color:red; transform:scale(1)}
+    23%  {background-color:yellow;}
+    25%  {background-color:white; transform:scale(1.1)}
+    25.5%  {background-color:yellow; transform:scale(1)}
+    48%  {background-color:blue;}
+    50%  {background-color:white; transform:scale(1.1)}
+    50.5%  {background-color:blue; transform:scale(1)}
+    73%  {background-color:green;}
+    75%  {background-color:white; transform:scale(1.1)}
+    75.5%  {background-color:green; transform:scale(1)}
+    98%  {background-color:red;}
+    100% {background-color:white; transform:scale(1.1)}
 }
 
 .blocks {
@@ -367,7 +411,7 @@ img {
     z-index: 50;
 }
 
-/* laptop screen and up */
+/* width 600px and up */
 @media (min-width: 600px) {
     body, html {
         max-width: 600px;
@@ -390,14 +434,6 @@ img {
         height: 21rem;
     }
 
-    .curtain-left {
-        width: 8rem;
-    }
-
-    .curtain-right {
-        width: 6rem;
-    }
-
     .blocks {
         justify-content: center;
         width: 100%;
@@ -413,7 +449,7 @@ img {
     }
 
     .floor {
-        height: calc(100% - 550px); /* 100% minus walls height; parent(body,html) must have height defined) */
+        height: calc(100% - 530px); /* 100% minus walls height; parent(body,html) must have height defined) */
         perspective: 325px;
     }
 
