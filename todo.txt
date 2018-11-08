@@ -28,15 +28,16 @@ X-onload/reload: animate curtains open
 X-animate truck moves left or truck moves right
 nope-info btn (displays keyboard info)
 X-toggle windoe view between scenery and bg color black
+X-encapsulate code to remove global variables
 
 -refactor code!
 
-extra features-
+pending tasks-
+-fix: letters sync w/song
 -img into view; from left, right, bottom (js: add css class (random .left, .right, .bottom), which has css animation)
--improve glass window effect (css animate window; 'flash' on letter click?)
+nah-improve glass window effect (css animate window; 'flash' on letter click?)
 ?-color-coded syllables of word (use haiku project as code ref)
 ??-press 'a', display "Aa", then random a2/a3/a4
--fix: letters sync w/song
 
 </todo>
 
@@ -52,10 +53,10 @@ layout:
 -rows: 5
 
 content:
-?1 = "Aa"
-?2 = "fruit"
-?3 = "animal"
-?4 = "object: toy, household, outside, etc"
+*1 = "Aa"
+*2 = "fruit"
+*3 = "animal"
+*4 = "object: toy, household, outside, etc"
 
 filename conventions:
 sound: a1, a2, a3

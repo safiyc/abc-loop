@@ -113,6 +113,7 @@ h1 {
 .curtain {
     position: absolute;
     top: -9px;
+    background: url("../img/curtain.jpg");
     opacity: .85;
     box-shadow: inset 0 3px 0 0 rgb(125,175,125),
                 inset 0 9px 0 0 rgb(0,145,0), 
@@ -126,7 +127,6 @@ h1 {
 .curtain-left {
     left: -6px;
     width: 51.1%;
-    background: url("../img/curtain-left.jpg");
 }
 
 .curtain-left.open {
@@ -137,8 +137,8 @@ h1 {
 .curtain-right {
     right: -6px;
     width: 51.1%;
-    background: url("../img/curtain-right.jpg");
-    background-position: 100% 0;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .curtain-right.open {
@@ -383,7 +383,7 @@ img {
     height: 100%;
     width: 100%;
     transform: scale(1.15);
-    background: url("../img/icon-info.png");
+    background: url("../img/icon-view.png");
     background-size: cover;
     -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, .8));
@@ -457,5 +457,4 @@ img {
         height: calc(100% - 530px); /* 100% minus walls height; parent(body,html) must have height defined) */
         perspective: 325px;
     }
-
 }
