@@ -151,7 +151,11 @@
         img.classList.add("music-note");
         song.setAttribute("src", "sounds/abc-song.mp3");
         songBtn.style.backgroundImage = "url('img/icon-stop.png')";
-        song.play();   
+        song.play();
+        // when letter event, restart at letter level of media
+        keys.forEach(function (key) {
+            key.removeAttribute("value");
+        });
     }
 
     function stopSong() {

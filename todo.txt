@@ -28,7 +28,8 @@ X-onload/reload: animate curtains open
 X-animate truck moves left or truck moves right
 nope-info btn (displays keyboard info)
 X-toggle windoe view between scenery and bg color black
-X-encapsulate code to remove global variables
+
+-encapsulate code to remove global variables (tried, but github pages wouldnt load; not sure how to fix)
 
 -refactor code!
 
