@@ -26,10 +26,9 @@ X-display letters when song plays (use ontimeupdate and currentTime to determine
 X?-desktop screen: bigger window/blocks, less block columns
 X-onload/reload: animate curtains open
 X-animate truck moves left or truck moves right
+nope-info btn (displays keyboard info)
+X-toggle windoe view between scenery and bg color black
 
--fix: letters sync w/song
--info btn (displays keyboard info)
--letters touchable (mobile)
 -refactor code!
 
 extra features-
@@ -37,6 +36,7 @@ extra features-
 -improve glass window effect (css animate window; 'flash' on letter click?)
 ?-color-coded syllables of word (use haiku project as code ref)
 ??-press 'a', display "Aa", then random a2/a3/a4
+-fix: letters sync w/song
 
 </todo>
 

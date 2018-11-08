@@ -1,8 +1,8 @@
 const img = document.querySelector("img");
-const keys = document.querySelectorAll('.block');
-const word = document.querySelector('.word');
+const keys = document.querySelectorAll(".block");
+const word = document.querySelector(".word");
 const songBtn = document.querySelector(".play-icon");
-const song = document.querySelector('audio[id="song"]');
+const song = document.querySelector("audio[id='song']");
 
 let lastKeyCode;
 
@@ -15,6 +15,10 @@ function abcLoop(e) {
 
     // stop abc song when a btn is pressed
     stopSong();
+
+    img.style.top = "30%";
+    img.classList.add("rotate-img");
+    key.classList.add("pressed");
 
     // confirms value of key in loop
     // file naming conventions: sound-> a1, a2, a3; img -> b1, b2, b3
@@ -41,26 +45,30 @@ function abcLoop(e) {
         word.textContent = arrABC[(e.keyCode - 65)][0];
     }
 
-    audio.play();
-    img.style.top = "30%";
-    img.classList.add('rotate-img');
-    key.classList.add('pressed');
     audio.currentTime = 0;
+    audio.play();
 }
 
-// Remove class 'pressed'
-function removeKeyPressed(e) {
-    if (e.propertyName !== 'transform') return;
-    this.classList.remove('pressed');  // 'this' => keys
-}
-
-// Remove class 'rotate-img'
+// Remove class "rotate-img"
 function removeImgRotate(e) {
-    if (e.propertyName !== "transform") return;
-    this.classList.remove('rotate-img');  // 'this' => img
+    if (e.propertyName !== "transform") {
+        return;
+    } else {    
+        this.classList.remove("rotate-img");  // 'this' => img
+    }
 }
 
-// Keydown event
+// Remove class "pressed"
+function removeKeyPressed(e) {
+    if (e.propertyName !== "transform") return;
+    this.classList.remove("pressed");  // 'this' => keys
+}
+
+// After transition animations end, run functions to remove classes
+img.addEventListener("transitionend", removeImgRotate);
+keys.forEach(key => key.addEventListener("transitionend", removeKeyPressed));
+
+// Keydown events
 // '16' => shift key; 8' => backspace key; '187' => equals key; '37' & '39' => left, right keys
 window.addEventListener('keydown', function (e) {
     if (e.keyCode == 16) {
@@ -75,7 +83,7 @@ window.addEventListener('keydown', function (e) {
         }
     } else if (e.keyCode == 37 || e.keyCode == 39) {   // issue: when 37||39 keyed, truck is effected at every position
         moveTruck();
-    } else if (65 <= e.keyCode <= 90) {
+    } else if (65 <= e.keyCode && e.keyCode <= 90) {
         abcLoop(e);
     }   else {
         return;
@@ -84,7 +92,7 @@ window.addEventListener('keydown', function (e) {
 
 // Click on letters, instead of event keydown
 for (let i = 0; i <= 25; i++) {
-    keys[i].addEventListener('click', function () {
+    keys[i].addEventListener("click", function () {
         let ltr = i + 65;  // 65 => 'a'
         const audio = document.querySelector(`audio[data-keycode="${ltr}"]`);
 
@@ -116,17 +124,13 @@ for (let i = 0; i <= 25; i++) {
             word.textContent = arrABC[(i)][0];
         }
 
+        audio.currentTime = 0;
         audio.play();
         img.style.top = "30%";
-        img.classList.add('rotate-img');
-        keys[i].classList.add('pressed');
-        audio.currentTime = 0;
+        img.classList.add("rotate-img");
+        keys[i].classList.add("pressed");
     });
 }
-
-// After transition animations end, run functions to remove classes
-img.addEventListener('transitionend', removeImgRotate);
-keys.forEach(key => key.addEventListener('transitionend', removeKeyPressed));
 
 // Click to play abc song
 songBtn.addEventListener("click", function () {
@@ -141,12 +145,13 @@ songBtn.addEventListener("click", function () {
 let songImgTimer;
 
 function playSong() {
+    songImgSync();
     word.textContent = "ABC Song";
+    img.classList.remove("rotate-img");
     img.classList.add("music-note");
     song.setAttribute("src", "sounds/abc-song.mp3");
     songBtn.style.backgroundImage = "url('img/icon-stop.png')";
     song.play();   
-    songImgSync();
 }
 
 function stopSong() {
@@ -154,20 +159,19 @@ function stopSong() {
     song.pause();
     song.currentTime = 0;
     clearInterval(songImgTimer);
-    // remove class added near end of song
     img.classList.remove("music-note");
     img.style.top = "100%";
-    
-    // sound and img gone, then 'ABC Song' gone
-    setTimeout(function () {
-        word.textContent = "";
-    }, 250);
 }
 
 // Execute when song ends
 song.onended = function () {
     console.log("song ended");
     stopSong();
+
+    // sound and img gone, then 'ABC Song' gone
+    setTimeout(function () {
+        word.textContent = "";
+    }, 250);
 }
 
 // To sync img to sound; still needs more work
@@ -188,12 +192,11 @@ function songImgSync() {
 
     songImgTimer = setInterval(function () {
         // set to start at .1 to help with syncing issue
-        if (songCurrentTime >= .1) {
+        if (songCurrentTime > .1) {
             // remove img after abc image 'z'
             if (j > 25) {
                 clearInterval(songImgTimer);
                 console.log("hey, stop here");
-                img.classList.add("music-note");
                 img.setAttribute("src", "img/music-note.png");
             } else {
                 img.setAttribute("src", `img/abc/${letters[65 + j]}1.png`);
@@ -250,8 +253,21 @@ function moveTruck () {
 }
 
 // Click to move truck left or right
-truck.addEventListener("click", function() {
+truck.addEventListener("click", function () {
     moveTruck();
+});
+
+// Window view toggles between scenery and black bg
+const viewIcon = document.querySelector(".view-icon");
+const outside = document.querySelector(".outside");
+viewIcon.addEventListener("click", function () {
+    if (outside.style.background != "black") {
+        outside.style.background = "black";
+    } else {
+        outside.style.backgroundRepeat = "no-repeat";
+        outside.style.backgroundSize = "cover";
+        outside.style.backgroundImage = "url('img/window_view.jpg')";
+    }
 });
 
 // Get current year

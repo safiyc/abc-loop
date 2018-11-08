@@ -32,5 +32,5 @@ const arrABC = [
     ["Ww", "watermelon", "whale", "window"], 
     ["Xx", "xray", "axe", "xylophone"],
     ["Yy", "yam", "yak", "yo-yo"], 
-    ["Zz", "zucchini", "zebra", "zipper"]
+    ["Zz", "zucchinis", "zebra", "zipper"]
 ];
