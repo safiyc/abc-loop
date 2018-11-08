@@ -1,5 +1,5 @@
-// Code is wrapped; to access, example: content.letters
-content = function() {
+// Code is wrapped; to access, example: abcData.letters
+// abcData = function() {
     // 'letters' for file naming purpose to get correct letter for keycode
     const letters = {
         65: "a", 66: "b", 67: "c", 68: "d", 69: "e", 70: "f", 71: "g", 72: "h", 73: "i", 74: "j",
@@ -39,11 +39,11 @@ content = function() {
 
     // let testAccess = "abcdef";
 
-    return {
+    // return {
         // test: testAccess,
-        letters: letters,
-        arrABC: arrABC
-    }
-}();
+    //     letters: letters,
+    //     arrABC: arrABC
+    // }
+// }();
 
-// console.log(content.test);
+// console.log(abcData.test);
